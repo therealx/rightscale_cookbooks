@@ -41,9 +41,9 @@ node[:db_mysql][:server_packages_uninstall] = []
 node[:db_mysql][:server_packages_install] = value_for_platform(
   "ubuntu" => {
     "10.04" => [],
-    "default" => ["percona-xtradb-cluster-full-56"]
+    "default" => ["libmysqlclient-dev", "percona-xtradb-cluster-full-56"]
   },
-  "default" => ["percona-xtradb-cluster-full-56"]
+  "default" => ["libmysqlclient-dev", "percona-xtradb-cluster-full-56"]
 )
 
 node[:db][:init_timeout] = node[:db_mysql][:init_timeout]

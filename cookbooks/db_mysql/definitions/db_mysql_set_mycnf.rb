@@ -21,7 +21,6 @@
 define(:db_mysql_set_mycnf,
   :server_id => nil,
   :relay_log => nil,
-  :innodb_log_file_size => nil,
   :compressed_protocol => false,
   :slave_net_timeout => nil,
   :ssl_enabled => nil,
@@ -121,7 +120,7 @@ define(:db_mysql_set_mycnf,
   # 25GB - 50GB
   # >50GB
   if mem < 3 * GB
-    node[:db_mysql][:tunable][:table_cache] ||= (256 * usage).to_i
+#    node[:db_mysql][:tunable][:table_cache] ||= (256 * usage).to_i
     node[:db_mysql][:tunable][:sort_buffer_size] ||=
       value_with_units(2, "M", usage)
     node[:db_mysql][:tunable][:innodb_additional_mem_pool_size] ||=
@@ -129,7 +128,7 @@ define(:db_mysql_set_mycnf,
     node[:db_mysql][:tunable][:myisam_sort_buffer_size] ||=
       value_with_units(64, "M", usage)
   elsif mem < 10 * GB
-    node[:db_mysql][:tunable][:table_cache] ||= (512 * usage).to_i
+#    node[:db_mysql][:tunable][:table_cache] ||= (512 * usage).to_i
     node[:db_mysql][:tunable][:sort_buffer_size] ||=
       value_with_units(4, "M", usage)
     node[:db_mysql][:tunable][:innodb_additional_mem_pool_size] ||=
@@ -137,7 +136,7 @@ define(:db_mysql_set_mycnf,
     node[:db_mysql][:tunable][:myisam_sort_buffer_size] ||=
       value_with_units(96, "M", usage)
   elsif mem < 25 * GB
-    node[:db_mysql][:tunable][:table_cache] ||= (1024 * usage).to_i
+#    node[:db_mysql][:tunable][:table_cache] ||= (1024 * usage).to_i
     node[:db_mysql][:tunable][:sort_buffer_size] ||=
       value_with_units(8, "M", usage)
     node[:db_mysql][:tunable][:innodb_additional_mem_pool_size] ||=
@@ -145,7 +144,7 @@ define(:db_mysql_set_mycnf,
     node[:db_mysql][:tunable][:myisam_sort_buffer_size] ||=
       value_with_units(128, "M", usage)
   elsif mem < 50 * GB
-    node[:db_mysql][:tunable][:table_cache] ||= (2048 * usage).to_i
+#    node[:db_mysql][:tunable][:table_cache] ||= (2048 * usage).to_i
     node[:db_mysql][:tunable][:sort_buffer_size] ||=
       value_with_units(16, "M", usage)
     node[:db_mysql][:tunable][:innodb_additional_mem_pool_size] ||=
@@ -153,7 +152,7 @@ define(:db_mysql_set_mycnf,
     node[:db_mysql][:tunable][:myisam_sort_buffer_size] ||=
       value_with_units(256, "M", usage)
   else
-    node[:db_mysql][:tunable][:table_cache] ||= (4096 * usage).to_i
+#    node[:db_mysql][:tunable][:table_cache] ||= (4096 * usage).to_i
     node[:db_mysql][:tunable][:sort_buffer_size] ||=
       value_with_units(32, "M", usage)
     node[:db_mysql][:tunable][:innodb_additional_mem_pool_size] ||=
@@ -201,9 +200,8 @@ define(:db_mysql_set_mycnf,
       :query_cache_size => node[:db_mysql][:tunable][:query_cache_size],
 
       # Logging and Replication
-      :log => node[:db_mysql][:log],
       :log_error => node[:db_mysql][:log_error],
-      :log_slow_queries => node[:db_mysql][:tunable][:log_slow_queries],
+      :slow_query_log => node[:db_mysql][:tunable][:log_slow_queries],
       :long_query_time => node[:db_mysql][:tunable][:long_query_time],
       :read_only => node[:db_mysql][:tunable][:read_only],
       :server_id => params[:server_id],

@@ -54,7 +54,7 @@ wait_timeout                  = <%= @wait_timeout %>
 net_read_timeout              = <%= @net_read_timeout %>
 net_write_timeout             = <%= @net_write_timeout %>
 back_log                      = <%= @back_log %>
-table_cache                   = <%= @table_cache %>
+#table_cache                   = <%= @table_cache %>
 max_heap_table_size           = <%= @max_heap_table_size %>
 
 sort_buffer_size              = <%= @sort_buffer_size %>
@@ -72,7 +72,6 @@ query_cache_size              = <%= @query_cache_size %>
 #
 # * Logging and Replication
 #
-<%= @log %>
 <%= @log_error %>
 <%= @log_slow_queries %>
 <%= @long_query_time %>

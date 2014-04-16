@@ -360,7 +360,28 @@ action :install_client do
       },
       "default" => []
     )
+when "5.6 Percona"
+    # CentOS/RedHat 6 by default has mysql-libs 5.1 installed as requirement for postfix.
+    # Will uninstall mysql-libs, install mysql55-lib.
+    node[:db_mysql][:client_packages_uninstall] = value_for_platform(
+      ["centos", "redhat"] => {
+        "5.8" => [],
+        "default" => ["mysql-libs"]
+      },
+      "default" => []
+    )
 
+    node[:db_mysql][:client_packages_install] = value_for_platform(
+      ["centos", "redhat"] => {
+        "5.8" => ["mysql55-devel", "mysql55-libs", "mysql55"],
+        "default" => ["mysql55-devel", "mysql55-libs", "mysql55"]
+      },
+      "ubuntu" => {
+        "10.04" => [],
+        "default" => ["percona-server-client-5.6"]
+      },
+      "default" => []
+    )
   else
     raise "MySQL version: #{version} not supported yet"
   end

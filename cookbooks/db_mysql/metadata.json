@@ -50,7 +50,8 @@
       "default": "shared",
       "recipes": [
         "db_mysql::setup_server_5_1",
-        "db_mysql::setup_server_5_5"
+        "db_mysql::setup_server_5_5",
+        "db_mysql::setup_server_5_6_percona"
       ],
       "calculated": false,
       "type": "string"
@@ -62,7 +63,8 @@
       "default": "/mnt/ephemeral/mysql-binlogs/mysql-bin",
       "recipes": [
         "db_mysql::setup_server_5_1",
-        "db_mysql::setup_server_5_5"
+        "db_mysql::setup_server_5_5",
+        "db_mysql::setup_server_5_6_percona"
       ],
       "choice": [
 
@@ -82,7 +84,8 @@
       "default": "MIXED",
       "recipes": [
         "db_mysql::setup_server_5_1",
-        "db_mysql::setup_server_5_5"
+        "db_mysql::setup_server_5_5",
+        "db_mysql::setup_server_5_6_percona"
       ],
       "calculated": false,
       "type": "string"
@@ -94,7 +97,8 @@
       "default": "/mnt/ephemeral/mysqltmp",
       "recipes": [
         "db_mysql::setup_server_5_1",
-        "db_mysql::setup_server_5_5"
+        "db_mysql::setup_server_5_5",
+        "db_mysql::setup_server_5_6_percona"
       ],
       "choice": [
 
@@ -109,7 +113,8 @@
       "default": "600",
       "recipes": [
         "db_mysql::setup_server_5_1",
-        "db_mysql::setup_server_5_5"
+        "db_mysql::setup_server_5_5",
+        "db_mysql::setup_server_5_6_percona"
       ],
       "choice": [
 
@@ -124,7 +129,8 @@
       "default": "2",
       "recipes": [
         "db_mysql::setup_server_5_1",
-        "db_mysql::setup_server_5_5"
+        "db_mysql::setup_server_5_5",
+        "db_mysql::setup_server_5_6_percona"
       ],
       "choice": [
 
@@ -142,7 +148,8 @@
       ],
       "default": "false",
       "recipes": [
-        "db_mysql::setup_server_5_5"
+        "db_mysql::setup_server_5_5",
+        "db_mysql::setup_server_5_6_percona"
       ],
       "calculated": false,
       "type": "string"
@@ -158,7 +165,8 @@
       "default": "disabled",
       "recipes": [
         "db_mysql::setup_server_5_1",
-        "db_mysql::setup_server_5_5"
+        "db_mysql::setup_server_5_5",
+        "db_mysql::setup_server_5_6_percona"
       ],
       "calculated": false,
       "type": "string"
@@ -170,7 +178,8 @@
       "default": "",
       "recipes": [
         "db_mysql::setup_server_5_1",
-        "db_mysql::setup_server_5_5"
+        "db_mysql::setup_server_5_5",
+        "db_mysql::setup_server_5_6_percona"
       ],
       "choice": [
 
@@ -185,7 +194,8 @@
       "default": "",
       "recipes": [
         "db_mysql::setup_server_5_1",
-        "db_mysql::setup_server_5_5"
+        "db_mysql::setup_server_5_5",
+        "db_mysql::setup_server_5_6_percona"
       ],
       "choice": [
 
@@ -200,7 +210,8 @@
       "default": "",
       "recipes": [
         "db_mysql::setup_server_5_1",
-        "db_mysql::setup_server_5_5"
+        "db_mysql::setup_server_5_5",
+        "db_mysql::setup_server_5_6_percona"
       ],
       "choice": [
 
@@ -215,7 +226,8 @@
       "default": "",
       "recipes": [
         "db_mysql::setup_server_5_1",
-        "db_mysql::setup_server_5_5"
+        "db_mysql::setup_server_5_5",
+        "db_mysql::setup_server_5_6_percona"
       ],
       "choice": [
 
@@ -230,7 +242,8 @@
       "default": "",
       "recipes": [
         "db_mysql::setup_server_5_1",
-        "db_mysql::setup_server_5_5"
+        "db_mysql::setup_server_5_5",
+        "db_mysql::setup_server_5_6_percona"
       ],
       "choice": [
 
@@ -243,7 +256,8 @@
   },
   "recipes": {
     "db_mysql::setup_server_5_1": "Sets the DB MySQL provider. Sets version 5.1 and node variables specific to MySQL 5.1.",
-    "db_mysql::setup_server_5_5": "Sets the DB MySQL provider. Sets version 5.5 and node variables specific to MySQL 5.5."
+    "db_mysql::setup_server_5_5": "Sets the DB MySQL provider. Sets version 5.5 and node variables specific to MySQL 5.5.",
+    "db_mysql::setup_server_5_6_percona": "Sets the DB MySQL provider. Sets version 5.6 and node variables specific to MySQL 5.6."
   },
   "version": "13.5.0"
 }

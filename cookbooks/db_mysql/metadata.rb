@@ -21,7 +21,9 @@ recipe "db_mysql::setup_server_5_1",
 recipe "db_mysql::setup_server_5_5",
   "Sets the DB MySQL provider. Sets version 5.5 and node variables specific" +
   " to MySQL 5.5."
-
+recipe "db_mysql::setup_server_5_6",
+  "Sets the DB MySQL provider. Sets version 5.6 Percona and node variables specific" +
+  " to MySQL 5.6."
 attribute "db_mysql",
   :display_name => "General Database Options",
   :type => "hash"
@@ -40,7 +42,8 @@ attribute "db_mysql/server_usage",
   :default => "shared",
   :recipes => [
     "db_mysql::setup_server_5_1",
-    "db_mysql::setup_server_5_5"
+    "db_mysql::setup_server_5_5",
+    "db_mysql::setup_server_5_6_percona"
   ]
 
 attribute "db_mysql/log_bin",
@@ -53,7 +56,8 @@ attribute "db_mysql/log_bin",
   :default => "/mnt/ephemeral/mysql-binlogs/mysql-bin",
   :recipes => [
     "db_mysql::setup_server_5_1",
-    "db_mysql::setup_server_5_5"
+    "db_mysql::setup_server_5_5",
+    "db_mysql::setup_server_5_6_percona"
   ]
 
 attribute "db_mysql/binlog_format",
@@ -67,7 +71,8 @@ attribute "db_mysql/binlog_format",
   :default => "MIXED",
   :recipes => [
     "db_mysql::setup_server_5_1",
-    "db_mysql::setup_server_5_5"
+    "db_mysql::setup_server_5_5",
+    "db_mysql::setup_server_5_6_percona"
   ]
 
 attribute "db_mysql/tmpdir",
@@ -79,7 +84,8 @@ attribute "db_mysql/tmpdir",
   :default => "/mnt/ephemeral/mysqltmp",
   :recipes => [
     "db_mysql::setup_server_5_1",
-    "db_mysql::setup_server_5_5"
+    "db_mysql::setup_server_5_5",
+    "db_mysql::setup_server_5_6_percona"
   ]
 
 attribute "db_mysql/init_timeout",
@@ -90,7 +96,8 @@ attribute "db_mysql/init_timeout",
   :default => "600",
   :recipes => [
     "db_mysql::setup_server_5_1",
-    "db_mysql::setup_server_5_5"
+    "db_mysql::setup_server_5_5",
+    "db_mysql::setup_server_5_6_percona"
   ]
 
 attribute "db_mysql/expire_logs_days",
@@ -101,7 +108,8 @@ attribute "db_mysql/expire_logs_days",
   :default => "2",
   :recipes => [
     "db_mysql::setup_server_5_1",
-    "db_mysql::setup_server_5_5"
+    "db_mysql::setup_server_5_5",
+    "db_mysql::setup_server_5_6_percona"
   ]
 
 attribute "db_mysql/enable_mysql_upgrade",
@@ -112,7 +120,8 @@ attribute "db_mysql/enable_mysql_upgrade",
   :required => "optional",
   :choice => ["true", "false"],
   :default => "false",
-  :recipes => ["db_mysql::setup_server_5_5"]
+  :recipes => ["db_mysql::setup_server_5_5",
+    "db_mysql::setup_server_5_6_percona"]
 
 attribute "db_mysql/compressed_protocol",
   :display_name => "Compression of the slave/master protocol",
@@ -124,7 +133,8 @@ attribute "db_mysql/compressed_protocol",
   :default => "disabled",
   :recipes => [
     "db_mysql::setup_server_5_1",
-    "db_mysql::setup_server_5_5"
+    "db_mysql::setup_server_5_5",
+    "db_mysql::setup_server_5_6_percona"
   ]
 
 attribute "db_mysql/ssl/ca_certificate",
@@ -138,7 +148,8 @@ attribute "db_mysql/ssl/ca_certificate",
   :default => "",
   :recipes => [
     "db_mysql::setup_server_5_1",
-    "db_mysql::setup_server_5_5"
+    "db_mysql::setup_server_5_5",
+    "db_mysql::setup_server_5_6_percona"
   ]
 
 attribute "db_mysql/ssl/master_certificate",
@@ -152,7 +163,8 @@ attribute "db_mysql/ssl/master_certificate",
   :default => "",
   :recipes => [
     "db_mysql::setup_server_5_1",
-    "db_mysql::setup_server_5_5"
+    "db_mysql::setup_server_5_5",
+    "db_mysql::setup_server_5_6_percona"
   ]
 
 attribute "db_mysql/ssl/master_key",
@@ -166,7 +178,8 @@ attribute "db_mysql/ssl/master_key",
   :default => "",
   :recipes => [
     "db_mysql::setup_server_5_1",
-    "db_mysql::setup_server_5_5"
+    "db_mysql::setup_server_5_5",
+    "db_mysql::setup_server_5_6_percona"
   ]
 
 attribute "db_mysql/ssl/slave_certificate",
@@ -180,7 +193,8 @@ attribute "db_mysql/ssl/slave_certificate",
   :default => "",
   :recipes => [
     "db_mysql::setup_server_5_1",
-    "db_mysql::setup_server_5_5"
+    "db_mysql::setup_server_5_5",
+    "db_mysql::setup_server_5_6_percona"
   ]
 
 attribute "db_mysql/ssl/slave_key",
@@ -194,5 +208,6 @@ attribute "db_mysql/ssl/slave_key",
   :default => "",
   :recipes => [
     "db_mysql::setup_server_5_1",
-    "db_mysql::setup_server_5_5"
+    "db_mysql::setup_server_5_5",
+    "db_mysql::setup_server_5_6_percona"
   ]

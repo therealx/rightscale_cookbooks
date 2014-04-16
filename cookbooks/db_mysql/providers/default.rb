@@ -378,7 +378,7 @@ when "5.6 Percona"
       },
       "ubuntu" => {
         "10.04" => [],
-        "default" => ["percona-server-client-5.6"]
+        "default" => ["libmysqlclient-dev", "percona-server-client-5.6"]
       },
       "default" => []
     )

@@ -185,7 +185,7 @@ action :post_restore_cleanup do
     snap_version = 5.6
   end
   if (current_version.include? "Percona")
-    snap_version = 5.6
+    current_version = 5.6
   end
   snap_version = Gem::Version.new(snap_version)
   current_version = Gem::Version.new(new_resource.db_version)

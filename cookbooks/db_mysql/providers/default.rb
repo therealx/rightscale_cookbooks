@@ -181,7 +181,7 @@ action :post_restore_cleanup do
     raise "FATAL: Wrong snapshot provider detected: #{snap_provider}." +
       " Expected #{current_provider}."
   end
-  if (snap_version.include? "Percona"))
+  if (snap_version.include? "Percona")
     snap_version = 5.5
   end
   if (current_version.include? "Percona")

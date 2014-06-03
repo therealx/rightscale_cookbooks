@@ -181,13 +181,19 @@ action :post_restore_cleanup do
     raise "FATAL: Wrong snapshot provider detected: #{snap_provider}." +
       " Expected #{current_provider}."
   end
-
+  if (snap_version.include? "Percona"))
+    snap_version = 5.6
+  end
+  if (current_version.include? "Percona")
+    snap_version = 5.6
+  end
   snap_version = Gem::Version.new(snap_version)
   current_version = Gem::Version.new(new_resource.db_version)
   if snap_version > current_version
     raise "FATAL: Cannot restore snapshot from a newer version of MySQL."
   elsif snap_version == current_version
-    Chef::Log.info "  Restore version and provider checks passed."
+  #get rid of this for now with our new string
+    Chef::Log.info "Passed version and provider checks."
   elsif snap_version < current_version
     if node[:db_mysql][:enable_mysql_upgrade] == "true"
       run_mysql_upgrade = true
@@ -360,28 +366,7 @@ action :install_client do
       },
       "default" => []
     )
-when "5.6 Percona"
-    # CentOS/RedHat 6 by default has mysql-libs 5.1 installed as requirement for postfix.
-    # Will uninstall mysql-libs, install mysql55-lib.
-    node[:db_mysql][:client_packages_uninstall] = value_for_platform(
-      ["centos", "redhat"] => {
-        "5.8" => [],
-        "default" => ["mysql-libs"]
-      },
-      "default" => []
-    )
 
-    node[:db_mysql][:client_packages_install] = value_for_platform(
-      ["centos", "redhat"] => {
-        "5.8" => ["mysql55-devel", "mysql55-libs", "mysql55"],
-        "default" => ["mysql55-devel", "mysql55-libs", "mysql55"]
-      },
-      "ubuntu" => {
-        "10.04" => [],
-        "default" => ["libmysqlclient-dev", "percona-server-client-5.6"]
-      },
-      "default" => []
-    )
   else
     raise "MySQL version: #{version} not supported yet"
   end

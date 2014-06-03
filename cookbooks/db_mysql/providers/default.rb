@@ -182,10 +182,10 @@ action :post_restore_cleanup do
       " Expected #{current_provider}."
   end
   if (snap_version.include? "Percona"))
-    snap_version = 5.6
+    snap_version = 5.5
   end
   if (current_version.include? "Percona")
-    current_version = 5.6
+    current_version = 5.5
   end
   snap_version = Gem::Version.new(snap_version)
   current_version = Gem::Version.new(new_resource.db_version)

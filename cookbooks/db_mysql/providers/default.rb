@@ -379,7 +379,7 @@ action :install_client do
       },
       "default" => []
     )
-when "5.6 Percona"
+when "5.6"
     # CentOS/RedHat 6 by default has mysql-libs 5.1 installed as requirement for postfix.
     # Will uninstall mysql-libs, install mysql55-lib.
     node[:db_mysql][:client_packages_uninstall] = value_for_platform(

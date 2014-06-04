@@ -8,7 +8,7 @@
 
 rightscale_marker
 
-version = "5.6 Percona"
+version = "5.6"
 node[:db][:version] = version
 node[:db][:provider] = "db_mysql"
 

@@ -166,12 +166,12 @@ action :post_restore_cleanup do
   master_info = RightScale::Database::Helper.load_replication_info(node)
 
   # case for percona
-  if (snap_version.include? "Percona")
-    snap_version = 5.5
-  end
-  if (current_version.include? "Percona")
-    current_version = 5.5
-  end
+  #if (snap_version.include? "Percona")
+ #   snap_version = 5.5
+  #end
+  #if (current_version.include? "Percona")
+  #  current_version = 5.5
+  #end
   # Checks version matches because not all 11H2 snapshots (prior to 5.5 release)
   # saved provider or version. Assume MySQL 5.1 if nil.
   snap_provider = master_info['DB_Provider'] ||= 'db_mysql'
@@ -180,6 +180,12 @@ action :post_restore_cleanup do
   Chef::Log.info "  Snapshot from #{snap_provider} version #{snap_version}"
 
 
+  log "Snap Provider"
+  log snap_provider
+  log "Snap Version"
+  log snap_version
+  log "Current Provider"
+  log current_provider
   # mysql_upgrade should only be run if corresponding input is set and snapshot
   # restore from an older version of MySQL is detected.
   run_mysql_upgrade = false

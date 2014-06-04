@@ -396,7 +396,7 @@ when "5.6 Percona"
         "default" => ["mysql55-devel", "mysql55-libs", "mysql55"]
       },
       "ubuntu" => {
-        "12.04" => [],
+        "10.04" => [],
         "default" => ["libmysqlclient-dev", "percona-server-client-5.6"]
       },
       "default" => []
